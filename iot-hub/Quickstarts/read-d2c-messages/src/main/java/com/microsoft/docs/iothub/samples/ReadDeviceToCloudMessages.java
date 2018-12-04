@@ -28,14 +28,14 @@ import java.net.URISyntaxException;
 public class ReadDeviceToCloudMessages {
 
   // az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {your IoT Hub name}
-  private static final String eventHubsCompatibleEndpoint = "{your Event Hubs compatible endpoint}";
+  private static final String eventHubsCompatibleEndpoint = "sb://ihsuprodamres044dednamespace.servicebus.windows.net/";
 
   // az iot hub show --query properties.eventHubEndpoints.events.path --name {your IoT Hub name}
-  private static final String eventHubsCompatiblePath = "{your Event Hubs compatible name}";
+  private static final String eventHubsCompatiblePath = "iothub-ehub-vksbp-ioth-177566-2512e5a6e5";
 
   // az iot hub policy show --name iothubowner --query primaryKey --hub-name {your IoT Hub name}
-  private static final String iotHubSasKey = "{your iothubowner primary key}";
-  private static final String iotHubSasKeyName = "iothubowner";
+  private static final String iotHubSasKey = "qU91dZaJl1RErySRi19+YC6fl7jqBVLegYgRTowk/pI=";
+  private static final String iotHubSasKeyName = "iotHubSasKeyName";
 
   // Track all the PartitionReciever instances created.
   private static ArrayList<PartitionReceiver> receivers = new ArrayList<PartitionReceiver>();
