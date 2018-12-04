@@ -97,12 +97,15 @@ public class SimulatedDevice {
 
     // Connect to the IoT hub.
     client = new DeviceClient(connString, protocol);
-    client.open();
 
-    // Create new thread and start sending messages 
     MessageCallback callback = new AppMessageCallback();
     client.setMessageCallback(callback, null);
     client.open();
+
+    // Create new thread and start sending messages 
+    MessageSender sender = new MessageSender();
+    ExecutorService executor = Executors.newFixedThreadPool(1);
+    executor.execute(sender);
 
     // Stop the application.
     System.out.println("Press ENTER to exit.");
@@ -119,4 +122,5 @@ public class SimulatedDevice {
       return IotHubMessageResult.COMPLETE;
     }
   }
+
 }
