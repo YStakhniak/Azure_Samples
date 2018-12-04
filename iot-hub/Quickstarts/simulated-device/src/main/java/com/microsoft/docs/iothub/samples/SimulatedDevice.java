@@ -100,14 +100,23 @@ public class SimulatedDevice {
     client.open();
 
     // Create new thread and start sending messages 
-    MessageSender sender = new MessageSender();
-    ExecutorService executor = Executors.newFixedThreadPool(1);
-    executor.execute(sender);
+    MessageCallback callback = new AppMessageCallback();
+    client.setMessageCallback(callback, null);
+    client.open();
 
     // Stop the application.
     System.out.println("Press ENTER to exit.");
     System.in.read();
     executor.shutdownNow();
     client.closeNow();
+  }
+
+  private static class AppMessageCallback implements MessageCallback {
+    public IotHubMessageResult execute(Message msg, Object context) {
+      System.out.println("Received message from hub: "
+              + new String(msg.getBytes(), Message.DEFAULT_IOTHUB_MESSAGE_CHARSET));
+
+      return IotHubMessageResult.COMPLETE;
+    }
   }
 }
