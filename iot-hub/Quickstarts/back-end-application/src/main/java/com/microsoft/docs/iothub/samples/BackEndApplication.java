@@ -17,7 +17,7 @@ public class BackEndApplication {
 
   // Connection string for your IoT Hub
   // az iot hub show-connection-string --hub-name {your iot hub name}
-  public static final String iotHubConnectionString = "{Your service connection string here}";
+  public static final String iotHubConnectionString = "HostName=vksbp-iothub-01-dev.azure-devices.net;DeviceId=MyJavaDevice;SharedAccessKey=Nq5UbH1MMojpSdghC8QtwPflcdQ6pMWT8hGB9+G5VSo=";
 
   // Device to call direct method on.
   public static final String deviceId = "MyJavaDevice";
